@@ -1,0 +1,41 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".MainActivity" >
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:padding="5dp"
+        android:text="@string/recent"
+        android:textSize="20sp" />
+
+    <ListView
+        android:id="@+id/recentWorkout"
+        android:layout_width="fill_parent"
+        android:layout_height="0px"
+        android:layout_weight="8"
+        android:padding="10dp" >
+
+    </ListView>
+
+    <Button
+        android:id="@+id/addSession"
+        android:layout_width="wrap_content"
+        android:layout_height="0px"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="1"
+        android:padding="5dp"
+        android:text="@string/newWorkout"
+        android:background="?android:attr/selectableItemBackground"
+        style="?android:attr/borderlessButtonStyle"/>
+    
+</LinearLayout>

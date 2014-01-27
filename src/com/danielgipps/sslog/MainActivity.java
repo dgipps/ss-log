@@ -21,14 +21,16 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         
-        LiftClass test1Lift = new LiftClass("Benchpress", "Completed",new Date() , 135);
-        LiftClass test2Lift = new LiftClass("OHP", "Failed",new Date() , 85);
-        LiftClass test3Lift = new LiftClass("Squat", "Stalled",new Date() , 145);
+        DatabaseHelper db= new DatabaseHelper(this.getApplicationContext());
         
-        List<LiftClass> lifts = new ArrayList<LiftClass>();
-        lifts.add(test1Lift);
-        lifts.add(test2Lift);
-        lifts.add(test3Lift);
+/*        LiftClass test1Lift = new LiftClass("Benchpress", "Completed",new Date() , 135);
+        LiftClass test2Lift = new LiftClass("OHP", "Failed",new Date() , 85);
+        LiftClass test3Lift = new LiftClass("Squat", "Stalled",new Date() , 145);*/
+        
+        List<LiftClass> lifts = db.getNewestLifts();
+//        lifts.add(test1Lift);
+//        lifts.add(test2Lift);
+//        lifts.add(test3Lift);
         
         ListView yourListView = (ListView) findViewById(R.id.recentWorkout);
 

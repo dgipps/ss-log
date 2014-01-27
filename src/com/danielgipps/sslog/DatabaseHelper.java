@@ -42,9 +42,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         LiftClass test2Lift = new LiftClass("OHP", "Failed",new Date() , 85);
         LiftClass test3Lift = new LiftClass("Squat", "Stalled",new Date() , 145);
         
-        addLift(test1Lift);
-        addLift(test2Lift);
-        addLift(test3Lift);
+        addLift(test1Lift, db);
+        addLift(test2Lift, db);
+        addLift(test3Lift, db);
+        
+ //       db.close();
 		
 
 	}
@@ -55,8 +57,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 		
 	}
 	
-	public void addLift(LiftClass aLift) {
-		SQLiteDatabase db = this.getWritableDatabase();
+	public void addLift(LiftClass aLift, SQLiteDatabase db) {
+
 		 
 	    ContentValues values = new ContentValues();
 	    values.put(KEY_TYPE, aLift.getLiftType()); 
@@ -65,14 +67,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	    values.put(KEY_DATE, aLift.getLiftDate().getTime());
 	    // Inserting Row
 	    db.insert(TABLE_LIFTS, null, values);
-	    db.close(); // Closing database connection
+	    
 	}
 	
 	public ArrayList<LiftClass> getNewestLifts() {
 		
 		SQLiteDatabase db = this.getReadableDatabase();
 		
-		Cursor cursor = db.rawQuery("SELECT * FROM" + TABLE_LIFTS + "ORDER BY column DESC LIMIT 2", null);
+		Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_LIFTS + " ORDER BY " + KEY_DATE + " DESC LIMIT 2", null);
 		
 		ArrayList<LiftClass> lifts = new ArrayList<LiftClass>();
 		
@@ -91,6 +93,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	        } while (cursor.moveToNext());
 	    }
 		
+		db.close();
 		
 		return lifts;
 		

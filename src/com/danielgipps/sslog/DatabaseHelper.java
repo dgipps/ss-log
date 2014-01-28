@@ -35,7 +35,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 		
 		
 		db.execSQL("CREATE TABLE " + TABLE_LIFTS + "(_id INTEGER PRIMARY KEY AUTOINCREMENT, " + KEY_TYPE
-				+ " TEXT, " + KEY_WEIGHT + "REAL, "
+				+ " TEXT, " + KEY_WEIGHT + " REAL, "
 				+ KEY_STATUS + " TEXT, " + KEY_DATE + " INTEGER);");
 		
 		LiftClass test1Lift = new LiftClass("Benchpress", "Completed",new Date() , 135);

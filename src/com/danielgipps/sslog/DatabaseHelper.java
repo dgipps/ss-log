@@ -74,7 +74,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 		
 		SQLiteDatabase db = this.getReadableDatabase();
 		
-		Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_LIFTS + " ORDER BY " + KEY_DATE + " DESC LIMIT 2", null);
+		Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_LIFTS + " ORDER BY " + KEY_DATE + " DESC LIMIT 2;", null);
 		
 		ArrayList<LiftClass> lifts = new ArrayList<LiftClass>();
 		

@@ -57,7 +57,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 		
 	}
 	
-	public void addLift(LiftClass aLift, SQLiteDatabase db) {
+	public void addLiftExt(LiftClass aLift) {
+		SQLiteDatabase db = this.getWritableDatabase();
+		
+		addLift(aLift,db);
+	}
+	private void addLift(LiftClass aLift, SQLiteDatabase db) {
 
 		 
 	    ContentValues values = new ContentValues();
@@ -74,7 +79,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 		
 		SQLiteDatabase db = this.getReadableDatabase();
 		
-		Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_LIFTS + " ORDER BY " + KEY_DATE + " DESC LIMIT 2;", null);
+		Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_LIFTS + " ORDER BY " + KEY_DATE + " DESC LIMIT 8;", null);
 		
 		ArrayList<LiftClass> lifts = new ArrayList<LiftClass>();
 		

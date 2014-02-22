@@ -7,14 +7,17 @@ import java.util.Date;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.app.FragmentManager;
 import android.content.Context;
 import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 
 public class MainActivity extends Activity {
+	Button addLift;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,22 +26,17 @@ public class MainActivity extends Activity {
         
         DatabaseHelper db= new DatabaseHelper(this.getApplicationContext());
         
-/*        LiftClass test1Lift = new LiftClass("Benchpress", "Completed",new Date() , 135);
-        LiftClass test2Lift = new LiftClass("OHP", "Failed",new Date() , 85);
-        LiftClass test3Lift = new LiftClass("Squat", "Stalled",new Date() , 145);*/
-        
         List<LiftClass> lifts = db.getNewestLifts();
-//        lifts.add(test1Lift);
-//        lifts.add(test2Lift);
-//        lifts.add(test3Lift);
         
         ListView yourListView = (ListView) findViewById(R.id.recentWorkout);
 
      // get data from the table by the ListAdapter
-     LiftsAdapter customAdapter = new LiftsAdapter(this, R.layout.recent_lift_elem, lifts);
+        LiftsAdapter customAdapter = new LiftsAdapter(this, R.layout.recent_lift_elem, lifts);
 
-     yourListView .setAdapter(customAdapter);
-        
+        yourListView.setAdapter(customAdapter);
+     
+        addLift = (Button) findViewById(R.id.addSession);
+        addLift.setOnClickListener(liftHandler);   
         
         
       }
@@ -49,5 +47,18 @@ public class MainActivity extends Activity {
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
+    
+    View.OnClickListener liftHandler = new View.OnClickListener() {
+        public void onClick(View v) {
+        	showLiftDialog();
+          
+        }
+      };
+      
+      private void showLiftDialog() {
+          FragmentManager fm = getFragmentManager();
+          AddWorkoutDialog addWorkoutDialog = new AddWorkoutDialog();
+          addWorkoutDialog.show(fm, "add_lift_frag");
+      }
     
 }

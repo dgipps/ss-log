@@ -6,5 +6,14 @@
     <string name="hello_world">Hello world!</string>
     <string name="recent">Recent Lifts</string>
     <string name="newWorkout">Add A Lift</string>
+    <string name='pick_date'>Change Date</string>
+    <string name='add_button'>Add Lift</string>
+    
+    <string-array name="completed_array">
+        <item>Completed</item>
+        <item>Stalled</item>
+        <item>Failed</item>
+
+    </string-array>
 
 </resources>

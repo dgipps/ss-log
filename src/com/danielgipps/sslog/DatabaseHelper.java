@@ -61,6 +61,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 		SQLiteDatabase db = this.getWritableDatabase();
 		
 		addLift(aLift,db);
+		
+		db.close();
 	}
 	private void addLift(LiftClass aLift, SQLiteDatabase db) {
 
@@ -102,6 +104,24 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 		
 		return lifts;
 		
+	}
+	
+	public ArrayList<String> getLiftTypes() {
+		SQLiteDatabase db = this.getReadableDatabase();
+		
+		Cursor cursor = db.rawQuery("SELECT DISTINCT " + KEY_TYPE + " FROM " + TABLE_LIFTS + ";", null);
+		
+		ArrayList<String> types = new ArrayList<String>();
+		
+		if (cursor.moveToFirst()) {
+	        do {
+	        	types.add(cursor.getString(0));
+	        } while (cursor.moveToNext());
+	    }
+		
+		db.close();
+		
+		return types;
 	}
 
 }

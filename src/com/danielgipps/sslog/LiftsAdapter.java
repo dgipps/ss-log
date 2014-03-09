@@ -6,11 +6,14 @@ package com.danielgipps.sslog;
 import java.util.List;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 /**
@@ -51,7 +54,19 @@ public class LiftsAdapter extends ArrayAdapter<LiftClass> {
 
 	        TextView tt = (TextView) v.findViewById(R.id.listElemType);
 	        TextView tt1 = (TextView) v.findViewById(R.id.secondLine);
+	        ImageView imgCompleted = (ImageView) v.findViewById(R.id.icon);
 
+	        String liftStatus = p.getLiftStatus();
+	        
+	        if (liftStatus.equals("Completed")) {
+	        	imgCompleted.setImageDrawable(new ColorDrawable(Color.GREEN));
+	        }
+	        else if (liftStatus.equals("Stalled")) {
+	        	imgCompleted.setImageDrawable(new ColorDrawable(Color.YELLOW));
+	        }
+	        else {
+	        	imgCompleted.setImageDrawable(new ColorDrawable(Color.RED));
+	        }
 	        if (tt != null) {
 	            tt.setText(p.getLiftType());
 	        }
@@ -66,6 +81,11 @@ public class LiftsAdapter extends ArrayAdapter<LiftClass> {
 
 	    return v;
 
+	}
+	
+	public void refreshLifts(List<LiftClass> lifts) {
+		this.items = lifts;
+		this.notifyDataSetChanged();
 	}
 
 }

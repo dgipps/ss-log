@@ -38,9 +38,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 				+ " TEXT, " + KEY_WEIGHT + " REAL, "
 				+ KEY_STATUS + " TEXT, " + KEY_DATE + " INTEGER);");
 		
-		LiftClass test1Lift = new LiftClass("Benchpress", "Completed",new Date() , 135);
-        LiftClass test2Lift = new LiftClass("OHP", "Failed",new Date() , 85);
-        LiftClass test3Lift = new LiftClass("Squat", "Stalled",new Date() , 145);
+		LiftClass test1Lift = new LiftClass("Benchpress", "Completed",new Date() , 135, 1);
+        LiftClass test2Lift = new LiftClass("OHP", "Failed",new Date() , 85, 2);
+        LiftClass test3Lift = new LiftClass("Squat", "Stalled",new Date() , 145, 3);
         
         addLift(test1Lift, db);
         addLift(test2Lift, db);
@@ -87,13 +87,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 		
 		if (cursor.moveToFirst()) {
 	        do {
+	        	int id = cursor.getInt(0);
+	        	
 	        	String type = cursor.getString(1);
 	        	int weight = cursor.getInt(2);
 	        	String status = cursor.getString(3);
 	        	Date date = new Date();
 	        	date.setTime(cursor.getInt(4));
 	        	
-	            LiftClass aLift = new LiftClass(type, status, date, weight);
+	            LiftClass aLift = new LiftClass(type, status, date, weight, id);
 
 
 	            lifts.add(aLift);
@@ -122,6 +124,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 		db.close();
 		
 		return types;
+	}
+	
+	public void deleteLift(int delId) {
+		SQLiteDatabase db = this.getWritableDatabase();
+		
+		db.delete(TABLE_LIFTS, "_id = ?", new String[] { String.valueOf(delId) });
+		db.close();
 	}
 
 }

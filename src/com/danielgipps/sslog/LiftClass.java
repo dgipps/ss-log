@@ -15,15 +15,22 @@ public class LiftClass {
 	
 	private Date liftDate;
 	
-	private Integer liftWeight;
+	private int liftWeight;
 	
 	private String liftStatus;
 	
-	public LiftClass(String liftType, String liftStatus, Date liftDate, Integer liftWeight) {
+	private int sqlId;
+	
+	public int getSqlId() {
+		return sqlId;
+	}
+
+	public LiftClass(String liftType, String liftStatus, Date liftDate, int liftWeight, int id) {
 		this.liftType = liftType;
 		this.liftStatus = liftStatus;
 		this.liftDate = liftDate;
 		this.liftWeight = liftWeight;
+		this.sqlId = id;
 	}
 
 	public String getLiftType() {

@@ -73,7 +73,9 @@ public class MainActivity extends Activity {
     
     public void refreshList() {
     	DatabaseHelper db = new DatabaseHelper(this.getApplicationContext());
-    	customAdapter.refreshLifts(db.getNewestLifts());
+    	customAdapter.clear();
+    	customAdapter.addAll(db.getNewestLifts());
+    	customAdapter.notifyDataSetChanged();
     }
     
     View.OnClickListener liftHandler = new View.OnClickListener() {
@@ -85,7 +87,7 @@ public class MainActivity extends Activity {
       
       private void showLiftDialog() {
           FragmentManager fm = getFragmentManager();
-          AddWorkoutDialog addWorkoutDialog = new AddWorkoutDialog();
+          AddWorkoutDialog addWorkoutDialog = new AddWorkoutDialog(this);
           addWorkoutDialog.show(fm, "add_lift_frag");
           
       }
@@ -118,6 +120,7 @@ public class MainActivity extends Activity {
     	            case R.id.context_delete:
     	                db.deleteLift(Integer.parseInt(id));
     	                
+    	                
     	                mode.finish(); // Action picked, so close the CAB
     	                return true;
     	            default:
@@ -127,7 +130,7 @@ public class MainActivity extends Activity {
 
 			@Override
 			public void onDestroyActionMode(ActionMode mode) {
-				// TODO Auto-generated method stub
+				MainActivity.this.refreshList();
 				
 			}
 

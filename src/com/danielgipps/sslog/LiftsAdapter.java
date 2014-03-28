@@ -85,7 +85,6 @@ public class LiftsAdapter extends ArrayAdapter<LiftClass> {
 	
 	public void refreshLifts(List<LiftClass> lifts) {
 		this.items = lifts;
-		this.notifyDataSetChanged();
 	}
 
 }

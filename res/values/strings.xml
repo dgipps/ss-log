@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">SS Log</string>
+    <string name="app_name">Log</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
     <string name="recent">Recent Lifts</string>
     <string name="newWorkout">Add A Lift</string>
-    <string name='pick_date'>Change Date</string>
+    <string name='pick_date'>&#160;&#160;Change Date</string>
     <string name='add_button'>Add Lift</string>
+    <string name='add_workout_title'>Add a lift</string>
     
     <string-array name="completed_array">
         <item>Completed</item>

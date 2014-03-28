@@ -37,7 +37,7 @@ public class MainActivity extends Activity {
         
         yourListView = (ListView) findViewById(R.id.recentWorkout);
 
-     // get data from the table by the ListAdapter
+     
         customAdapter = new LiftsAdapter(this, R.layout.recent_lift_elem, lifts);
 
         yourListView.setAdapter(customAdapter);
@@ -45,6 +45,7 @@ public class MainActivity extends Activity {
         addLift = (Button) findViewById(R.id.addSession);
         addLift.setOnClickListener(liftHandler);   
         
+        // Action mode listener for long click presses on the list view
         yourListView.setOnItemLongClickListener(new OnItemLongClickListener() {
         	public boolean onItemLongClick(AdapterView<?> p, View view, int pos, long id) {
         		ActionMode mActionMode = startActionMode(mActionModeCallback);
@@ -60,7 +61,7 @@ public class MainActivity extends Activity {
     
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
+        
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }

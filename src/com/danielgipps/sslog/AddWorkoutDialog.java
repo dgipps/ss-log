@@ -61,7 +61,7 @@ public class AddWorkoutDialog extends DialogFragment{
         
         liftType.setAdapter(typeAdapter);
         
-        getDialog().setTitle("Pick a date");
+        getDialog().setTitle(R.string.add_workout_title);
         final Calendar c = Calendar.getInstance();
         yearOf = c.get(Calendar.YEAR);
         month = c.get(Calendar.MONTH);

@@ -24,7 +24,7 @@ public class LiftsAdapter extends ArrayAdapter<LiftClass> {
 
 	public LiftsAdapter(Context context, int resource) {
 		super(context, resource);
-		// TODO Auto-generated constructor stub
+		
 	}
 	private List<LiftClass> items;
 

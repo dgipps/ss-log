@@ -55,6 +55,8 @@ public class LiftsAdapter extends ArrayAdapter<LiftClass> {
 	        TextView tt = (TextView) v.findViewById(R.id.listElemType);
 	        TextView tt1 = (TextView) v.findViewById(R.id.secondLine);
 	        ImageView imgCompleted = (ImageView) v.findViewById(R.id.icon);
+	        
+	        TextView setsReps = (TextView) v.findViewById(R.id.listSetsReps);
 
 	        String liftStatus = p.getLiftStatus();
 	        
@@ -75,6 +77,11 @@ public class LiftsAdapter extends ArrayAdapter<LiftClass> {
 	        	weight += " lbs";
 
 	            tt1.setText(weight);
+	        }
+	        
+	        if (setsReps != null) {
+	        	String setsRepsString = new String(String.valueOf(p.getSets()) + " X " + String.valueOf(p.getReps()));
+	        	setsReps.setText(setsRepsString);
 	        }
 
 	    }

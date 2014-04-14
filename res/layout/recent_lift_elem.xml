@@ -16,7 +16,7 @@
 
     <TextView
         android:id="@+id/secondLine"
-        android:layout_width="fill_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/icon"
         android:layout_toRightOf="@+id/icon"
@@ -24,9 +24,9 @@
         android:singleLine="true"
         android:textSize="12sp" />
     
-        <TextView
+    <TextView
             android:id="@+id/listElemType"
-            android:layout_width="fill_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_above="@+id/secondLine"
             android:layout_alignParentRight="true"
@@ -36,5 +36,16 @@
             android:text="TEST"
             android:textColor="#000000"
             android:textSize="16sp" />
+    
+    <TextView 
+        android:id="@+id/listSetsReps"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:textSize="16sp"
+        android:layout_centerInParent="true"/>"
+        
+
+        
 
 </RelativeLayout> 

@@ -38,11 +38,40 @@
         android:inputType="number"
         style="@android:style/TextAppearance.Medium"/>
     </LinearLayout>
+    
+    <LinearLayout 
+        android:id="@+id/linearSets"
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:layout_below="@id/linearTop"
+        >
+        <TextView 
+            android:layout_width="0dp"
+            android:layout_weight="0.5"
+            android:layout_height="fill_parent"
+            android:textSize="16dp"
+            android:gravity="left|center_vertical"></TextView>
+        <EditText
+            android:id="@+id/fieldSets"
+            android:layout_width="0dp"
+            android:layout_weight="0.25"
+            android:layout_height="fill_parent"
+            android:inputType="number"
+            android:hint="Sets"/>
+        <EditText
+            android:id="@+id/fieldReps"
+            android:layout_width="0dp"
+            android:layout_weight="0.25"
+            android:layout_height="fill_parent"
+            android:inputType="number"
+            android:hint="Reps"/>"
+        
+    </LinearLayout>"
         <LinearLayout 
         android:id="@+id/linearMid"
         android:layout_width="fill_parent"
         android:layout_height="40dp"
-        android:layout_below="@id/linearTop">
+        android:layout_below="@id/linearSets">
     <Button 
         android:id="@+id/dateButton"
     	android:layout_width="0dp" 

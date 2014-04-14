@@ -9,6 +9,7 @@
     <string name='pick_date'>&#160;&#160;Change Date</string>
     <string name='add_button'>Add Lift</string>
     <string name='add_workout_title'>Add a lift</string>
+    <string name="sets">SETS X REPS</string>
     
     <string-array name="completed_array">
         <item>Completed</item>

@@ -17,6 +17,10 @@ public class LiftClass {
 	
 	private int liftWeight;
 	
+	private int liftReps;
+	
+	private int liftSets;
+	
 	private String liftStatus;
 	
 	private int sqlId;
@@ -25,12 +29,14 @@ public class LiftClass {
 		return sqlId;
 	}
 
-	public LiftClass(String liftType, String liftStatus, Date liftDate, int liftWeight, int id) {
+	public LiftClass(String liftType, String liftStatus, Date liftDate, int liftWeight, int id, int sets, int reps) {
 		this.liftType = liftType;
 		this.liftStatus = liftStatus;
 		this.liftDate = liftDate;
 		this.liftWeight = liftWeight;
 		this.sqlId = id;
+		this.setReps(reps);
+		this.setSets(sets);
 	}
 
 	public String getLiftType() {
@@ -63,6 +69,22 @@ public class LiftClass {
 
 	public void setLiftStatus(String liftStatus) {
 		this.liftStatus = liftStatus;
+	}
+
+	public int getReps() {
+		return liftReps;
+	}
+
+	public void setReps(int liftReps) {
+		this.liftReps = liftReps;
+	}
+
+	public int getSets() {
+		return liftSets;
+	}
+
+	public void setSets(int liftSets) {
+		this.liftSets = liftSets;
 	}
 	
 	

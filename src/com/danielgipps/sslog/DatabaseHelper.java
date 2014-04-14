@@ -23,6 +23,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String KEY_WEIGHT = "weight";
     private static final String KEY_STATUS = "status";
     private static final String KEY_DATE = "date";
+    private static final String KEY_REPS = "reps";
+    private static final String KEY_SETS = "sets";
 	
 
 	public DatabaseHelper(Context context) {
@@ -36,11 +38,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 		
 		db.execSQL("CREATE TABLE " + TABLE_LIFTS + "(_id INTEGER PRIMARY KEY AUTOINCREMENT, " + KEY_TYPE
 				+ " TEXT, " + KEY_WEIGHT + " REAL, "
-				+ KEY_STATUS + " TEXT, " + KEY_DATE + " INTEGER);");
+				+ KEY_STATUS + " TEXT, " + KEY_DATE + " INTEGER, " + KEY_REPS + " INTEGER, " + KEY_SETS + " INTEGER);");
 		
-		LiftClass test1Lift = new LiftClass("Benchpress", "Completed",new Date() , 135, 1);
-        LiftClass test2Lift = new LiftClass("OHP", "Failed",new Date() , 85, 2);
-        LiftClass test3Lift = new LiftClass("Squat", "Stalled",new Date() , 145, 3);
+		LiftClass test1Lift = new LiftClass("Benchpress", "Completed",new Date() , 135, 1, 3, 5);
+        LiftClass test2Lift = new LiftClass("OHP", "Failed",new Date() , 85, 2, 3, 5);
+        LiftClass test3Lift = new LiftClass("Squat", "Stalled",new Date() , 145, 3, 3, 5);
         
         addLift(test1Lift, db);
         addLift(test2Lift, db);
@@ -72,6 +74,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	    values.put(KEY_WEIGHT, aLift.getLiftWeight());
 	    values.put(KEY_STATUS, aLift.getLiftStatus());
 	    values.put(KEY_DATE, aLift.getLiftDate().getTime());
+	    values.put(KEY_REPS, aLift.getReps());
+	    values.put(KEY_SETS, aLift.getSets());
 	    // Inserting Row
 	    db.insert(TABLE_LIFTS, null, values);
 	    
@@ -94,8 +98,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	        	String status = cursor.getString(3);
 	        	Date date = new Date();
 	        	date.setTime(cursor.getInt(4));
+	        	int reps = cursor.getInt(5);
+	        	int sets = cursor.getInt(6);
 	        	
-	            LiftClass aLift = new LiftClass(type, status, date, weight, id);
+	            LiftClass aLift = new LiftClass(type, status, date, weight, id, reps, sets);
 
 
 	            lifts.add(aLift);

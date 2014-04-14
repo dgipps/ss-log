@@ -27,6 +27,9 @@ public class AddWorkoutDialog extends DialogFragment{
 	private Spinner completed;
 	private TextView dateDisplay;
 	private TextView weightText;
+	private EditText setText;
+	private EditText repText;
+	
 	private int yearOf;
 	private int month;
 	private int day;
@@ -46,12 +49,17 @@ public class AddWorkoutDialog extends DialogFragment{
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.add_lift_frag, container);
+        
+        
         liftType = (AutoCompleteTextView) view.findViewById(R.id.workoutType);
         pickDate = (Button) view.findViewById(R.id.dateButton);
         dateDisplay = (TextView) view.findViewById(R.id.dateDisplay);
         addLift = (Button) view.findViewById(R.id.addbutton);
         completed = (Spinner) view.findViewById(R.id.completedSpinner);
         weightText = (EditText) view.findViewById(R.id.weight);
+        setText = (EditText) view.findViewById(R.id.fieldSets);
+        repText = (EditText) view.findViewById(R.id.fieldReps);
+        
         
         final DatabaseHelper db= new DatabaseHelper(getActivity().getApplicationContext());
         
@@ -85,12 +93,15 @@ public class AddWorkoutDialog extends DialogFragment{
 				String lift = liftType.getText().toString();
 				String liftStatus = completed.getSelectedItem().toString();
 				Integer weight = Integer.parseInt(weightText.getText().toString());
+				Integer sets = Integer.parseInt(setText.getText().toString());
+				Integer reps = Integer.parseInt(repText.getText().toString());
+				
 				Calendar c = Calendar.getInstance();
 				c.set(yearOf,month,day,0,0);
 				
 				Date date = c.getTime();
 				
-				LiftClass aLift = new LiftClass(lift, liftStatus, date, weight, 1);
+				LiftClass aLift = new LiftClass(lift, liftStatus, date, weight, 1, reps, sets);
 				db.addLiftExt(aLift);
 				
 				activity.refreshList();

@@ -101,7 +101,7 @@ public class AddWorkoutDialog extends DialogFragment{
 				
 				Date date = c.getTime();
 				
-				LiftClass aLift = new LiftClass(lift, liftStatus, date, weight, 1, reps, sets);
+				LiftClass aLift = new LiftClass(lift, liftStatus, date, weight, 1, sets, reps);
 				db.addLiftExt(aLift);
 				
 				activity.refreshList();
